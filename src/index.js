@@ -7,9 +7,7 @@ mongoose.connect('mongodb+srv://root:jo2603@omnistack.q9hib.mongodb.net/semana07
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
+app.use(require('./routes'))
 
-app.get("/", (req, res) =>{
-    return res.send(`irineu, vc não sabe e nem eu!`)
-})
 
 app.listen(3333)
