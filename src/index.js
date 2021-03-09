@@ -6,7 +6,12 @@ const cors = require('cors')
 const app = express()
 
 const server = require('http').Server(app)
-const io = require('socket.io')(server)
+const io = require('socket.io')(server, {
+    cors: {
+      origin: "http://localhost:3000",
+      credentials: true
+    }
+  });
 
 mongoose.connect('mongodb+srv://root:jo2603@omnistack.q9hib.mongodb.net/semana07?retryWrites=true&w=majority',{
     useNewUrlParser: true,
@@ -14,7 +19,7 @@ mongoose.connect('mongodb+srv://root:jo2603@omnistack.q9hib.mongodb.net/semana07
 });
 
 app.use((req, res, next)=>{
-    req.io = io
+    req.io = io;
 
     next()
 })
